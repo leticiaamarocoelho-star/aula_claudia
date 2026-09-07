@@ -1,0 +1,73 @@
+header {
+   background: #ff99d1;
+   padding: 20px 30px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+  
+header h1 {
+   color: rgb(249, 240, 139);
+   font-size: 48px;
+   font-style: italic;
+   font-weight: 300;
+}
+ 
+header h3 {
+   color: rgb(249, 240, 139);
+   font-size: 26px;
+   font-style: italic;
+   font-weight: 300;
+}
+ 
+.servicos {
+    color: rgb(233, 137, 197);
+   font-size: 27px;
+   font-style: italic;
+   font-weight: 300;
+}
+ 
+.agendamento {
+   background: #ff99d1;
+   color: rgb(249, 240, 139);
+   font-size: 27px;
+   font-style: italic;
+   font-weight: 300;
+}
+ 
+.formulario {
+   color: rgb(233, 137, 197);
+   font-size: 27px;
+   font-style: italic;
+   font-weight: 300;
+}
+ 
+.servicos2 {
+   color: rgb(233, 137, 197);
+   font-size: 27px;
+   font-style: italic;
+   font-weight: 300;
+}
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 

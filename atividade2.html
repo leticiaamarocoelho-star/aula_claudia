@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Beauty</title>
+    <link rel="stylesheet" href="atividade2.css">
+</head>
+<body>
+ 
+ <div class="logo">
+    <header>
+      <h1>Aurora Beauty</h1>
+      <h3>Onde a beleza encontra sua essência.</h3>
+    </header>
+    <div class="servicos">
+        <h3>Nossos Serviços</h3>
+        <ul>
+            <li>Massagem Relaxante</li>
+            <li>Depilação a Laser</li>
+            <li>Manicure e Pedicure</li>
+        </ul>
+        <h4>obs: Serviços somente com agendamento</h4>
+    </div>
+
+    <div class="agendamento">
+        <h3>Para agendamento, preencha o formulário abaixo:</h3>
+    </div>
+
+
+    <div class="formulario">
+
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite seu nome..." name="nome" required>
+
+        <div>
+            <label>Email:</label>
+            <input type="email" placeholder="Digite seu email..." name="email" required>
+        </div>
+
+        <div>
+            <label>Telefone:</label>
+            <input type="tel" placeholder="Digite seu telefone..." name="telefone" required>
+        </div>
+
+        <div>
+            <label>Horario:</label>
+            <input type="time" name="horario" required>
+        </div>
+    </div>
+
+    <div class=servicos2>
+        <div>
+            <h3>Serviços:</h3>
+            <input type="radio" value="massagem" name="servico" required> Massagem Relaxante<br>
+            <input type="radio" value="depilacao" name="servico" required> Depilação a Laser<br>
+            <input type="radio" value="manicure" name="servico" required> Manicure e Pedicure<br>
+        </div>
+            <button type="submit">Agendar</button>
+    </div>
+</div>
+</body>
+</html>
