@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Estúdio Aurora — Agendamento</title>
+        <link rel="stylesheet" href="atividade7.css">
+    </head>
+    <body>
+        
+        <div class="page">
+            <div class="marca"><span>ESTÚDIO AURORA</span></div>
+            <h1>Agende seu horário</h1>
+            <p class="intro">Preencha os dados abaixo e nossa equipe confirma o melhor horário para você.</p>
+            <form class="evento-form" onsubmit="enviouFormulario(event)">
+                <div class="campo">
+                    <label for="servico">Qual serviço você deseja?</label>
+                    <select id="servico" onchange="mudouOpcao(this)">
+                        <option value="">Escolha um serviço</option>
+                        <option value="Corte">Corte</option>
+                        <option value="Coloração">Coloração</option>
+                        <option value="Escova">Escova modelada</option>
+                        <option value="Manicure">Manicure e pedicure</option>
+                    </select>
+                    <p class="resultado" id="resultadoChange"></p>
+                </div>
+                <div class="campo">
+                    <label for="telefone">Telefone para contato</label>
+                    <input type="tel" id="telefone" placeholder="(00) 00000-0000" onfocus="entrouNoCampo()">
+                    <p class="resultado" id="resultadoFocus"></p>
+                </div>
+                <div class="campo">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" placeholder="Seu nome completo" onblur="saiuDoCampo()">
+                    <p class="resultado" id="resultadoBlur"></p>
+                </div>
+                <div class="campo">
+                    <label for="observacoes">Alguma observação para a equipe?</label>
+                    <textarea id="observacoes" placeholder="Ex: prefiro horário da tarde" onkeydown="pressionouTecla(event)"></textarea>
+                    <p class="resultado" id="resultadoKeyDown"></p>
+                </div>
+                <div class="campo">
+                    <label>Prefere ver os horários livres antes de continuar?</label>
+                    <button type="button" onclick="clicou()">Ver disponibilidade</button>
+                    <p class="resultado" id="resultadoClick"></p>
+                </div>
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seuemail@exemplo.com">
+                    <button type="submit">Confirmar agendamento</button>
+                    <p class="resultado" id="resultadoSubmit"></p>
+                </div>
+            </form>
+        </div>
+        
+        
+        <script>
+        
+        function clicou() {
+            document.getElementById("resultadoClick").textContent =
+            "Horários livres hoje: 10h, 14h e 16h30.";
+        }
+        
+        function mudouOpcao(elemento) {
+            document.getElementById("resultadoChange").textContent =
+            "Você escolheu: " + elemento.value;
+        }
+        
+        function enviouFormulario(event) {
+            event.preventDefault();
+            document.getElementById("resultadoSubmit").textContent =
+            "Formulário enviado!";
+
+        }
+
+        function entrouNoCampo() {
+            document.getElementById("resultadoFocus").textContent =
+            "O campo recebeu foco!";
+        }
+
+        function saiuDoCampo() {
+            document.getElementById("resultadoBlur").textContent =
+            "Você saiu do campo!";
+        }
+
+        function pressionouTecla(event) {
+            document.getElementById("resultadoKeyDown").textContent =
+            "Você pressionou: " + event.key;
+            }
+       </script>
+   </body>
+</html>
+ 
