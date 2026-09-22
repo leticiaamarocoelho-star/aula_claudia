@@ -1,0 +1,128 @@
+:root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f3f7;
+    margin: 0;
+    padding: 24px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 640px;
+    border-radius: 8px;
+    border: 1px solid #e2e4ea;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    padding: 32px 28px 28px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin: 0 0 24px;
+    color: #1a1a1a;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #222;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 1px solid #cdd0d8;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #1a1a1a;
+}
+
+input[type="text"]::placeholder {
+    color: #9aa0ab;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #4f5fce;
+    box-shadow: 0 0 0 3px rgba(79, 95, 206, 0.15);
+}
+
+button {
+    margin-top: 4px;
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #4f5fce;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+button:hover {
+    background-color: #414fb0;
+}
+
+button:active {
+    background-color: #37429a;
+}
+
+#mensagem {
+    text-align: center;
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: #555;
+    min-height: 1.2em;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 24px 18px 20px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .linha {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+ 

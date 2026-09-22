@@ -1,141 +1,92 @@
-<!DOCTYPE html> 
-<html lang="pt-BR"> 
- 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
- 
-    <title>Cadastro de Endereço</title> 
- 
-    <style> 
-        body { 
-            font-family: Arial; 
-            padding: 20px; 
-        } 
- 
-    </style> 
-</head> 
- 
-<body> 
- 
-    <h1>Cadastro de Endereço</h1> 
- 
-    <form> 
- 
-        <label for="cep"> 
-            CEP 
-        </label> 
- 
-        <input 
-            type="text" 
-            id="cep" 
-            placeholder="Digite o CEP" 
-        > 
- 
-        <label for="logradouro"> 
-            Rua 
-        </label> 
- 
-        <input 
-            type="text" 
-            id="logradouro" 
-        > 
- 
-        <label for="numero"> 
-            Número 
-        </label> 
- 
-        <input 
-            type="text" 
-            id="numero" 
-        > 
- 
-        <label for="bairro"> 
-            Bairro 
-        </label> 
- 
-        <input 
-            type="text" 
-            id="bairro" 
-        > 
- 
-        <label for="cidade"> 
-            Cidade 
-        </label> 
- 
-        <input 
-            type="text" 
-            id="cidade" 
-        > 
- 
-        <label for="estado"> 
-            Estado 
-        </label> 
- 
-        <input 
-            type="text" 
-            id="estado" 
-        > 
- 
-        <button 
-            type="button" 
-            onclick="buscarCep()" 
-        > 
-            Buscar CEP 
-        </button> 
- 
-        <p id="mensagem"></p> 
- 
-    </form> 
-
-
-    <script>
-    //selecione o elemento que tenha id === usuarios
-    const mensagem = document.querySelector("#mensagem");
-    const cep = document.querySelector("#cep");
-    const logradouro = document.querySelector("#logradouro");
-    const numero = document.querySelector("#numero");
-    const bairro = document.querySelector("#bairro");
-    const cidade = document.querySelector("#cidade");
-    const estado = document.querySelector("#estado");
-
-
-      function buscarCep() {
-        logradouro.innerHTML = "";
-        numero.innerHTML = "";
-        bairro.innerHTML = "";
-        cidade.innerHTML = "";
-        estado.innerHTML = "";
-        mensagem.textContent = "Carregando...";
-        console.log(cep.value);
-
-        fetch(`https://viacep.com.br/ws/${cep.value}/json/`) //aqui que é chamada a API/backend  //se eu nao definir o metodo o fetch faz um GET
-          .then(function (response) { // entao // esperando o retorno do meu backend
-            if (!response.ok) {
-              throw new Error("Erro ao buscar CEP");
-            }
-            console.log(response)
-            return response.json();
-          })
-          .then(function (dados) {
-            mensagem.textContent = "";
-            bairro.value = dados.bairro;
-            cidade.value = dados.cidade;
-            estado.value = dados.estado;
-            logradouro.value = dados.logradouro;
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <title>Cadastro de Endereço</title>
+        <link rel="stylesheet" href="atividade4.css">
+    </head>
+    <body>
+        <div class="card">
+            <h1>Cadastro de Endereço</h1>
+            <form>
+                <div class="campo">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" placeholder="Digite o CEP">
+                </div>
+                <div class="campo">
+                    <label for="logradouro">Rua</label>
+                    <input type="text" id="logradouro">
+                </div>
+                
+                <div class="linha">
+                    <div class="campo">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero">
+                    </div>
+                    <div class="campo">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro">
+                    </div>
+                </div>
+                <div class="linha">
+                    <div class="campo">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade">
+                    </div>
+                    <div class="campo">
+                        <label for="estado">Estado</label><input type="text" id="estado">
+                    </div>
+                </div>
+                <button type="button" onclick="buscarCep()">Buscar CEP</button>
+                <p id="mensagem"></p>
+            </form>
+        </div>
+        <script>
+        
+        const mensagem = document.querySelector("#mensagem");
+        const cep = document.querySelector("#cep");
+        const logradouro = document.querySelector("#logradouro");
+        const numero = document.querySelector("#numero");
+        const bairro = document.querySelector("#bairro");
+        const cidade = document.querySelector("#cidade");
+        const estado = document.querySelector("#estado");
+        
+        function buscarCep() {
+            logradouro.value = "";
+            numero.value = "";
+            bairro.value = "";
+            cidade.value = "";
+            estado.value = "";
+            mensagem.textContent = "Carregando...";
             
-            console.log(dados)
-         })
-          .catch(function (erro) {
-            mensagem.textContent = "Não foi possível.";
-
-            console.error(erro);
-          });
-      }
-
-    </script> 
- 
-</body> 
- 
-</html> 
+            console.log(cep.value);
+            
+            fetch(`https://viacep.com.br/ws/${cep.value}/json/`)
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar CEP");
+                }
+                console.log(response)
+                return response.json();
+            })
+            
+            .then(function (dados) {
+                mensagem.textContent = "";
+                bairro.value = dados.bairro;
+                cidade.value = dados.localidade;
+                estado.value = dados.uf;
+                logradouro.value = dados.logradouro;
+                
+                console.log(dados)
+            })
+            
+            .catch(function (erro) {
+                mensagem.textContent = "Não foi possível.";
+                console.error(erro);
+            });
+        }
+     </script>  
+ </body>
+</html>
  
