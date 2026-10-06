@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  margin: 0;
+}
+
+.container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.entrada {
+  display: flex;
+  gap: 4px;
+}
+
+#tarefa {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  min-width: 0;
+}
+
+button {
+  padding: 8px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+ul {
+  margin: 15px 0 0;
+  padding-left: 30px;
+}
+
+li {
+  margin: 6px 0;
+}
+
+li.feita span {
+  text-decoration: line-through;
+  color: #666;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="atividade7.css">
+        <title>Minha Lista</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Minha Lista</h1>
+            <div class="entrada">
+                <input type="text" id="tarefa" placeholder="Digite uma tarefa">
+                <button id="adicionar">Adicionar</button>
+            </div>
+            <ul id="lista"></ul>
+        </div>
+        
+        <script>
+        
+        const input = document.getElementById('tarefa');
+        const botao = document.getElementById('adicionar');
+        const lista = document.getElementById('lista');
+        
+        function adicionarTarefa() {
+            
+            const texto = input.value.trim();
+            if (texto === '') return;
+            const li = document.createElement('li');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            const span = document.createElement('span');
+            span.textContent = ' ' + texto;
+            checkbox.addEventListener('change', () => {
+                li.classList.toggle('feita', checkbox.checked);
+            });
+            
+            li.append(checkbox, span);
+            lista.appendChild(li);
+            input.value = '';
+            input.focus();
+        }
+        
+        botao.addEventListener('click', adicionarTarefa);
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') adicionarTarefa();
+            });
+            
+        </script>
+    </body>
+</html>
+ 
