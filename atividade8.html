@@ -5,17 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="atividade8.css">
         <title>Pokémon</title>
-        <link
-      href="https://pokeapi.co/api/v2/pokemon/NOME_DO_POKEMON
-      rel=stylesheet"
-    />""
+    
     </head>
     <body>
         <div class="titulo">
             <h1>Aventura Pokémon</h1>
             <div class="entrada">
                 <input type="text" id="adicionar" placeholder="Digite o nome de um Pokémon">
-                <button id="Procurar">Procurar</button>
+                <button id="Procurar">Procurar Pokémon</button>
             </div>
             <ul id="lista"></ul>
         </div>
@@ -26,30 +23,60 @@
         const botao = document.getElementById('Procurar');
         const lista = document.getElementById('lista');
         
-        function adicionarTarefa() {
+        async function procurarPokemon() {
             
-            const texto = input.value.trim();
-            if (texto === '') return;
-            const li = document.createElement('li');
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            const span = document.createElement('span');
-            span.textContent = ' ' + texto;
-            checkbox.addEventListener('change', () => {
-                li.classList.toggle('feita', checkbox.checked);
-            });
+            const nome = input.value.trim().toLowerCase();
+            if (nome === '') {
+                alert('Digite o nome de um Pokémon!');
+                return;
+            }
             
-            li.append(checkbox, span);
-            lista.appendChild(li);
-            input.value = '';
-            input.focus();
+            lista.innerHTML = '<li>Pesquisando...</li>';
+            try {
+                const resposta = await fetch(
+                    `https://pokeapi.co/api/v2/pokemon/${nome}`
+                );
+                
+                if (!resposta.ok) {
+                    if (resposta.status === 404) {
+                        lista.innerHTML = '<li>Pokémon não encontrado!</li>';
+                        return;
+                    }
+                    
+                    throw new Error('Erro ao acessar a API');
+                }
+                
+                const dados = await resposta.json();
+                lista.innerHTML = '';
+                
+                const informacoes = [
+                    'Nome: ' + dados.name,
+                    'ID: ' + dados.id,
+                    'Altura: ' + dados.height / 10 + ' metros',
+                    'Peso: ' + dados.weight / 10 + ' kg',
+                    'Habilidades: ' + dados.abilities.map(
+                        item => item.ability.name
+                    ).join(', ')
+                ];
+                
+                informacoes.forEach(function(informacao) {
+                    const li = document.createElement('li');
+                    li.textContent = informacao;
+                    lista.appendChild(li);
+                });
+            
+            } catch (erro) {
+                lista.innerHTML =
+                '<li>Erro na comunicação com a API!</li>';
+                console.log(erro);
+            }
         }
-        
-        botao.addEventListener('click', adicionarTarefa);
-        input.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') adicionarTarefa();
-            });
-            
+        botao.addEventListener('click', procurarPokemon);
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                procurarPokemon();
+            }
+        });
         </script>
     </body>
 </html>
