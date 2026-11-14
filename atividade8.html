@@ -1,3 +1,5 @@
+vizualize esse codigo e explique oq cada linha faz 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -5,11 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="atividade8.css">
         <title>Pokémon</title>
-    
     </head>
     <body>
+        
         <div class="titulo">
             <h1>Aventura Pokémon</h1>
+            
             <div class="entrada">
                 <input type="text" id="adicionar" placeholder="Digite o nome de um Pokémon">
                 <button id="Procurar">Procurar Pokémon</button>
@@ -30,7 +33,6 @@
                 alert('Digite o nome de um Pokémon!');
                 return;
             }
-            
             lista.innerHTML = '<li>Pesquisando...</li>';
             try {
                 const resposta = await fetch(
@@ -50,13 +52,14 @@
                 lista.innerHTML = '';
                 
                 const informacoes = [
-                    'Nome: ' + dados.name,
-                    'ID: ' + dados.id,
-                    'Altura: ' + dados.height / 10 + ' metros',
-                    'Peso: ' + dados.weight / 10 + ' kg',
-                    'Habilidades: ' + dados.abilities.map(
-                        item => item.ability.name
-                    ).join(', ')
+                    
+                'Nome: ' + dados.name,
+                'ID: ' + dados.id,
+                'Altura: ' + dados.height / 10 + ' metros',
+                'Peso: ' + dados.weight / 10 + ' kg',
+                'Habilidades: ' + dados.abilities
+                .map(item => item.ability.name)
+                .join(', ')
                 ];
                 
                 informacoes.forEach(function(informacao) {
@@ -64,10 +67,8 @@
                     li.textContent = informacao;
                     lista.appendChild(li);
                 });
-            
             } catch (erro) {
-                lista.innerHTML =
-                '<li>Erro na comunicação com a API!</li>';
+                lista.innerHTML = '<li>Erro na comunicação com a API!</li>';
                 console.log(erro);
             }
         }

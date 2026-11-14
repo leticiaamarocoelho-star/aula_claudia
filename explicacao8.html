@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="explicacao8.css">
+    <title>Pokémon</title>
+</head>
+<body>
+    <div class="titulo">
+        <h1>Aventura Pokémon</h1>
+
+        <div class="entrada">
+            <input type="text" id="adicionar" placeholder="Digite o nome de um Pokémon">
+            <!-- Cria um campo onde o usuário digita o nome do Pokémon -->
+            <!-- type define o tipo de campo, id identifica o elemento e placeholder mostra uma orientação -->
+
+            <button id="Procurar">Procurar Pokémon</button>
+            <!-- Cria o botão que inicia a pesquisa do Pokémon -->
+
+        </div>
+        
+        <ul id="lista"></ul>
+        <!-- Cria uma lista vazia onde serão exibidas as informações do Pokémon -->
+    </div>
+
+
+    <script>
+
+    const input = document.getElementById('adicionar');
+    // Busca o campo de texto pelo ID adicionar e guarda na variável input
+
+    const botao = document.getElementById('Procurar');
+    // Busca o botão pelo ID Procurar e guarda na variável botao
+
+    const lista = document.getElementById('lista');
+    // Busca a lista pelo ID lista e guarda na variável lista
+
+    async function procurarPokemon() {
+    // Cria uma função assíncrona responsável por pesquisar os Pokémon
+
+        const nome = input.value.trim().toLowerCase();
+        // Pega o nome digitado, remove espaços das extremidades e transforma em minúsculas
+
+        if (nome === '') {
+        // Verifica se o usuário deixou o campo vazio
+
+            alert('Digite o nome de um Pokémon!');
+            // Exibe um alerta pedindo para digitar um nome
+
+            return;
+            // Interrompe a função para não continuar a pesquisa
+
+        }
+
+        lista.innerHTML = '<li>Pesquisando...</li>';
+        // Mostra uma mensagem enquanto a API está sendo consultada
+
+        try {
+            const resposta = await fetch(
+                `https://pokeapi.co/api/v2/pokemon/${nome}`
+            );
+            // Faz uma requisição para a PokéAPI usando o nome digitado
+            // await aguarda a resposta antes de continuar
+            // ${nome} coloca o nome do Pokémon dentro do endereço da API
+
+            if (!resposta.ok) {
+            // Verifica se a requisição não foi bem-sucedida
+
+                if (resposta.status === 404) {
+                // Verifica se o erro recebido foi 404, indicando Pokémon não encontrado
+
+                    lista.innerHTML = '<li>Pokémon não encontrado!</li>';
+                    // Exibe uma mensagem informando que o Pokémon não foi encontrado
+
+                    return;
+                }
+
+
+                throw new Error('Erro ao acessar a API');
+                // Cria e lança um erro caso aconteça outro problema na requisição
+
+            }
+
+            const dados = await resposta.json();
+            // Converte a resposta da API para o formato JSON e guarda os dados
+
+            lista.innerHTML = '';
+            // Limpa a lista antes de adicionar as novas informações
+
+            const informacoes = [
+            // Cria um array (lista) para armazenar as informações do Pokémon
+
+                'Nome: ' + dados.name,
+                // Pega o nome do Pokémon retornado pela API
+
+                'ID: ' + dados.id,
+                // Pega o número de identificação do Pokémon
+
+                'Altura: ' + dados.height / 10 + ' metros',
+                // Pega a altura e divide por 10 para converter de decímetros para metros
+
+                'Peso: ' + dados.weight / 10 + ' kg',
+                // Pega o peso e divide por 10 para converter de hectogramas para quilogramas
+
+                'Habilidades: ' + dados.abilities
+                // Acessa a lista de habilidades do Pokémon
+
+                .map(item => item.ability.name)
+                // Percorre as habilidades e pega somente o nome de cada uma
+
+                .join(', ')
+                // Junta os nomes das habilidades, separando cada uma por vírgula
+
+            ];
+
+            informacoes.forEach(function(informacao) {
+            // Percorre cada informação armazenada no array
+
+                const li = document.createElement('li');
+                // Cria um novo elemento HTML li para cada informação
+
+                li.textContent = informacao;
+                // Coloca o texto da informação dentro do elemento li
+
+                lista.appendChild(li);
+                // Adiciona o elemento li dentro da lista HTML
+
+            });
+
+
+        } catch (erro) {
+        // Captura possíveis erros que acontecerem durante a pesquisa
+
+            lista.innerHTML = '<li>Erro na comunicação com a API!</li>';
+            // Mostra uma mensagem caso aconteça um erro na comunicação com a API
+
+            console.log(erro);
+            // Exibe os detalhes do erro no console do navegador para ajudar na identificação do problema
+
+        }
+
+    }
+
+    botao.addEventListener('click', procurarPokemon);
+    // Faz a pesquisa ser executada quando o usuário clicar no botão
+
+    input.addEventListener('keydown', function(e) {
+    // Detecta quando uma tecla é pressionada dentro do campo de texto
+
+        if (e.key === 'Enter') {
+        // Verifica se a tecla pressionada foi Enter
+
+            procurarPokemon();
+            // Executa a pesquisa quando o usuário aperta Enter
+
+        }
+
+    });
+    </script>
+</body>
+</html>

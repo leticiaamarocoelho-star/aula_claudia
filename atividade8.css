@@ -25,7 +25,7 @@ body {
 }
 
 h1 {
-    color: #e63946;
+    color: #e63981;
     margin-bottom: 25px;
     font-size: 32px;
 }
@@ -46,7 +46,7 @@ input[type="text"] {
 }
 
 button {
-    background-color: #e63946;
+    background-color: #e63981;
     color: white;
     padding: 12px 18px;
     border: none;
@@ -56,7 +56,7 @@ button {
 }
 
 button:hover {
-    background-color: #bd2634;
+    background-color: #e63981;
 }
 
 ul {
@@ -73,6 +73,6 @@ li {
     margin-bottom: 8px;
     background-color: white;
     border-radius: 6px;
-    border-left: 4px solid #e63946;
+    border-left: 4px solid #e63981;
     overflow-wrap: anywhere;
 }

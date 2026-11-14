@@ -1,0 +1,177 @@
+
+/* Seleciona todos os elementos da página */
+* {
+    margin: 0; 
+    /* Remove as margens padrões dos elementos */
+
+    padding: 0;
+    /* Remove os espaçamentos internos padrões */
+
+    box-sizing: border-box;
+    /* Faz o tamanho dos elementos incluir padding e bordas */
+}
+
+/* Estiliza o corpo da página */
+body {
+    background-color: #f4e6c8;
+    /* Define a cor de fundo da página */
+
+    font-family: Arial, sans-serif;
+    /* Define a fonte do texto como Arial */
+
+    min-height: 100vh;
+    /* Faz o corpo ocupar pelo menos 100% da altura da tela */
+
+    display: flex;
+    /* Ativa o Flexbox para organizar os elementos */
+
+    justify-content: center;
+    /* Centraliza os elementos horizontalmente */
+
+    align-items: center;
+    /* Centraliza os elementos verticalmente */
+}
+
+/* Estiliza a caixa principal da página */
+.titulo {
+    background-color: #ffffff;
+    /* Define o fundo da caixa como branco */
+
+    width: 90%;
+    /* Define a largura da caixa como 90% da tela */
+
+    max-width: 550px;
+    /* Define a largura máxima da caixa em 550 pixels */
+
+    padding: 35px;
+    /* Adiciona 35 pixels de espaçamento interno */
+
+    margin: 20px;
+    /* Adiciona 20 pixels de margem externa */
+
+    border-radius: 15px;
+    /* Arredonda os cantos da caixa */
+
+    text-align: center;
+    /* Centraliza os textos dentro da caixa */
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    /* Adiciona uma sombra ao redor da caixa */
+}
+
+/* Estiliza o título principal */
+h1 {
+    color: #e63981;
+    /* Define a cor do título como rosa */
+
+    margin-bottom: 25px;
+    /* Adiciona espaço abaixo do título */
+
+    font-size: 32px;
+    /* Define o tamanho da letra em 32 pixels */
+}
+
+/* Estiliza a área de entrada do nome e o botão */
+.entrada {
+    display: flex;
+    /* Coloca o campo de texto e o botão lado a lado */
+
+    gap: 10px;
+    /* Adiciona 10 pixels de espaço entre os elementos */
+
+    margin-bottom: 25px;
+    /* Adiciona espaço abaixo da área de entrada */
+}
+
+/* Estiliza o campo de texto */
+input[type="text"] {
+    flex: 1;
+    /* Faz o campo ocupar o espaço disponível */
+
+    padding: 12px;
+    /* Adiciona espaçamento interno de 12 pixels */
+
+    border: 2px solid #dddddd;
+    /* Define uma borda de 2 pixels na cor cinza claro */
+
+    border-radius: 8px;
+    /* Arredonda os cantos do campo */
+
+    font-size: 14px;
+    /* Define o tamanho do texto em 14 pixels */
+
+    outline: none;
+    /* Remove o contorno padrão que aparece ao selecionar o campo */
+}
+
+/* Estiliza o botão de pesquisa */
+button {
+    background-color: #e63981;
+    /* Define a cor de fundo do botão como rosa */
+
+    color: white;
+    /* Define a cor do texto como branco */
+
+    padding: 12px 18px;
+    /* Adiciona espaçamento interno de 12 pixels na vertical e 18 na horizontal */
+
+    border: none;
+    /* Remove a borda padrão do botão */
+
+    border-radius: 8px;
+    /* Arredonda os cantos do botão */
+
+    cursor: pointer;
+    /* Muda o cursor para uma mão quando passa sobre o botão */
+
+    font-weight: bold;
+    /* Deixa o texto do botão em negrito */
+}
+
+/* Define a aparência do botão quando o mouse passa sobre ele */
+button:hover {
+    background-color: #e63981;
+    /* Mantém a cor de fundo rosa ao passar o mouse */
+}
+
+/* Estiliza a lista onde aparecem as informações do Pokémon */
+ul {
+    list-style: none;
+    /* Remove as bolinhas que aparecem normalmente nas listas */
+
+    background-color: #fff4e8;
+    /* Define a cor de fundo da lista */
+
+    padding: 20px;
+    /* Adiciona espaçamento interno de 20 pixels */
+
+    border-radius: 10px;
+    /* Arredonda os cantos da lista */
+
+    text-align: left;
+    /* Alinha as informações à esquerda */
+}
+
+/* Estiliza cada informação individual do Pokémon */
+li {
+    color: #333333;
+    /* Define a cor do texto como cinza escuro */
+
+    padding: 10px;
+    /* Adiciona espaçamento interno de 10 pixels */
+
+    margin-bottom: 8px;
+    /* Adiciona espaço abaixo de cada informação */
+
+    background-color: white;
+    /* Define o fundo de cada informação como branco */
+
+    border-radius: 6px;
+    /* Arredonda os cantos de cada item */
+
+    border-left: 4px solid #e63981;
+    /* Adiciona uma borda rosa de 4 pixels no lado esquerdo */
+
+    overflow-wrap: anywhere;
+    /* Permite quebrar textos grandes para evitar que ultrapassem o espaço */
+}
