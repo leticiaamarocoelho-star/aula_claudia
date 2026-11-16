@@ -1,48 +1,48 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;/* Faz o tamanho dos elementos incluir padding e bordas */
 }
 
 body {
     background-color: #f4e6c8;
     font-family: Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 100vh;/* Faz o corpo ocupar pelo menos 100% da altura da tela */
+    display: flex;/* Flexbox */
+    justify-content: center;/* Centraliza horizontalmente */
+    align-items: center;/* Centraliza verticalmente */
 }
 
 .titulo {
     background-color: #ffffff;
-    width: 90%;
-    max-width: 550px;
-    padding: 35px;
-    margin: 20px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width: 90%;/* Define a largura da caixa */
+    max-width: 550px;/* Define a largura máxima da caixa */
+    padding: 35px;/* Adiciona espaçamento interno */
+    margin: 20px;/* Adiciona margem ao redor da caixa */
+    border-radius: 15px;/* Arredonda os cantos da caixa */
+    text-align: center;/* Centraliza os textos dentro da caixa */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);/* Adiciona uma sombra ao redor da caixa */
 }
 
 h1 {
     color: #e63981;
     margin-bottom: 25px;
-    font-size: 32px;
+    font-size: 32px;/* Define o tamanho da letra */
 }
 
 .entrada {
     display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
+    gap: 10px;/* Adiciona um espaço entre o campo de texto e o botão */
+    margin-bottom: 25px;/* Adiciona espaço abaixo da área de entrada */
 }
 
 input[type="text"] {
-    flex: 1;
+    flex: 1;/* Faz o campo de texto ocupar o máximo de espaço disponível */
     padding: 12px;
     border: 2px solid #dddddd;
-    border-radius: 8px;
+    border-radius: 8px;/* Arredonda os cantos do campo de texto */
     font-size: 14px;
-    outline: none;
+    outline: none;/* Remove a borda de foco padrão */
 }
 
 button {
@@ -52,7 +52,7 @@ button {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: bold;/* Deixa o texto do botão em negrito */
 }
 
 button:hover {
@@ -60,19 +60,19 @@ button:hover {
 }
 
 ul {
-    list-style: none;
+    list-style: none;/* Remove os marcadores padrão da lista */
     background-color: #fff4e8;
     padding: 20px;
     border-radius: 10px;
-    text-align: left;
+    text-align: left;/* Alinha o texto à esquerda */
 }
 
 li {
     color: #333333;
     padding: 10px;
-    margin-bottom: 8px;
+    margin-bottom: 8px;/* Adiciona espaço  */
     background-color: white;
     border-radius: 6px;
-    border-left: 4px solid #e63981;
-    overflow-wrap: anywhere;
+    border-left: 4px solid #e63981;/* Adiciona uma borda rosa no lado esquerdo */
+    overflow-wrap: anywhere;/* Permite quebrar textos grandes para evitar que ultrapassem o espaço */
 }
