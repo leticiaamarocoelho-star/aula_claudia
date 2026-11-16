@@ -53,9 +53,6 @@ button {
     cursor: pointer;
     font-weight: bold;
 }
-button:hover {
-    background-color: #e63981;
-}
 
 ul {
     list-style: none;
@@ -72,5 +69,4 @@ li {
     background-color: white;
     border-radius: 6px;
     border-left: 4px solid #e63981;
-    overflow-wrap: anywhere;
 }

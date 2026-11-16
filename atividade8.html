@@ -12,19 +12,21 @@
             <h1>Aventura Pokémon</h1>
             
             <div class="entrada">
-                <input type="text" id="adicionar" placeholder="Digite o nome de um Pokémon">/* cria um campo*/
+                <input type="text" id="adicionar" placeholder="Digite o nome de um Pokémon"><!-- cria um campo de texto -->
                 <button id="Procurar">Procurar Pokémon</button>
+                <button id="Limpar">Limpar</button>
             </div>
             <ul id="lista"></ul>
         </div>
         
+
         <script>
-        
-        const input = document.getElementById('adicionar'); /* Busca o campo de texto pelo ID adicionar */
+            
+        const input = document.getElementById('adicionar'); 
         const botao = document.getElementById('Procurar');
         const lista = document.getElementById('lista');
         
-        async function procurarPokemon() {/* Cria uma função responsável por pesquisar os Pokémon */
+        async function procurarPokemon() {
             
             const nome = input.value.trim().toLowerCase();
             if (nome === '') {
@@ -33,7 +35,7 @@
             lista.innerHTML = '<li>Pesquisando...</li>';
             try {
                 const resposta = await fetch(
-                    `https://pokeapi.co/api/v2/pokemon/${nome}` /* Faz uma requisição */         
+                    `https://pokeapi.co/api/v2/pokemon/${nome}` /* Faz uma requisição para a API do Pokémon com o nome digitado pelo usuário */                     
                 );
                 
                 if (!resposta.ok) {
@@ -45,17 +47,17 @@
                     throw new Error('Erro ao acessar a API');
                 }
                 
-                const dados = await resposta.json();
-                lista.innerHTML = '';
+                const dados = await resposta.json();/* Converte a resposta da API em um objeto JSON */
+                lista.innerHTML = '';/* Limpa a lista antes de exibir as informações do Pokémon */
             
-                const informacoes = [
+                const informacoes = [/* Cria um array com as informações do Pokémon */
                     
-                'Nome: ' + dados.name,/* Adiciona o nome do Pokémon */
+                'Nome: ' + dados.name,
                 'ID: ' + dados.id,
                 'Altura: ' + dados.height / 10 + ' metros',
                 'Peso: ' + dados.weight / 10 + ' kg',
                 'Habilidades: ' + dados.abilities 
-                .map(item => item.ability.name)
+                .map(item => item.ability.name)/* Mapeia as habilidades */
                 .join(', ')
                 ];
                 
