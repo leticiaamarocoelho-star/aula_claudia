@@ -21,35 +21,34 @@
         <script>
         
         const input = document.getElementById('adicionar'); /* Busca o campo de texto pelo ID adicionar */
-        const botao = document.getElementById('Procurar');/* Busca o botão pelo ID Procurar */
-        const lista = document.getElementById('lista');/* Busca a lista pelo ID lista */
+        const botao = document.getElementById('Procurar');
+        const lista = document.getElementById('lista');
         
         async function procurarPokemon() {/* Cria uma função responsável por pesquisar os Pokémon */
             
             const nome = input.value.trim().toLowerCase();
             if (nome === '') {
-                alert('Digite o nome de um Pokémon!');// Exibe um alerta pedindo para digitar um nome
-                return;
+                alert('Digite o nome de um Pokémon!');
             }
-            lista.innerHTML = '<li>Pesquisando...</li>';// Mostra uma mensagem enquanto a API está sendo consultada
+            lista.innerHTML = '<li>Pesquisando...</li>';
             try {
                 const resposta = await fetch(
-                    `https://pokeapi.co/api/v2/pokemon/${nome}` /* Faz uma requisição para a PokéAPI usando o nome digitado */
+                    `https://pokeapi.co/api/v2/pokemon/${nome}` /* Faz uma requisição */         
                 );
                 
                 if (!resposta.ok) {
                     if (resposta.status === 404) {
                         lista.innerHTML = '<li>Pokémon não encontrado!</li>';
-                        return;// Exibe uma mensagem caso o Pokémon não seja encontrado
+                        return;
                     }
                     
-                    throw new Error('Erro ao acessar a API');// Lança um erro caso a resposta da API não seja ok
+                    throw new Error('Erro ao acessar a API');
                 }
                 
-                const dados = await resposta.json();/* Converte a resposta da API em um objeto JSON */
-                lista.innerHTML = '';// Limpa a lista antes de exibir as informações do Pokémon
-                
-                const informacoes = [/* Cria um array com as informações do Pokémon */
+                const dados = await resposta.json();
+                lista.innerHTML = '';
+            
+                const informacoes = [
                     
                 'Nome: ' + dados.name,/* Adiciona o nome do Pokémon */
                 'ID: ' + dados.id,
@@ -66,7 +65,7 @@
                     lista.appendChild(li);
                 });
             } catch (erro) {
-                lista.innerHTML = '<li>Erro na comunicação com a API!</li>';// Exibe uma mensagem caso ocorra um erro na comunicação com a API
+                lista.innerHTML = '<li>Erro na comunicação com a API!</li>';
                 console.log(erro);
             }
         }

@@ -7,44 +7,43 @@
 body {
     background-color: #f4e6c8;
     font-family: Arial, sans-serif;
-    min-height: 100vh;/* Faz o corpo ocupar pelo menos 100% da altura da tela */
-    display: flex;/* Flexbox */
-    justify-content: center;/* Centraliza horizontalmente */
-    align-items: center;/* Centraliza verticalmente */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .titulo {
     background-color: #ffffff;
-    width: 90%;/* Define a largura da caixa */
-    max-width: 550px;/* Define a largura máxima da caixa */
-    padding: 35px;/* Adiciona espaçamento interno */
-    margin: 20px;/* Adiciona margem ao redor da caixa */
-    border-radius: 15px;/* Arredonda os cantos da caixa */
-    text-align: center;/* Centraliza os textos dentro da caixa */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);/* Adiciona uma sombra ao redor da caixa */
+    width: 90%;
+    max-width: 550px;
+    padding: 35px;
+    margin: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 h1 {
     color: #e63981;
     margin-bottom: 25px;
-    font-size: 32px;/* Define o tamanho da letra */
+    font-size: 32px;
 }
 
 .entrada {
     display: flex;
-    gap: 10px;/* Adiciona um espaço entre o campo de texto e o botão */
-    margin-bottom: 25px;/* Adiciona espaço abaixo da área de entrada */
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
 input[type="text"] {
-    flex: 1;/* Faz o campo de texto ocupar o máximo de espaço disponível */
+    flex: 1;
     padding: 12px;
     border: 2px solid #dddddd;
-    border-radius: 8px;/* Arredonda os cantos do campo de texto */
+    border-radius: 8px;
     font-size: 14px;
-    outline: none;/* Remove a borda de foco padrão */
+    outline: none;
 }
-
 button {
     background-color: #e63981;
     color: white;
@@ -52,27 +51,26 @@ button {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;/* Deixa o texto do botão em negrito */
+    font-weight: bold;
 }
-
 button:hover {
     background-color: #e63981;
 }
 
 ul {
-    list-style: none;/* Remove os marcadores padrão da lista */
+    list-style: none;
     background-color: #fff4e8;
     padding: 20px;
     border-radius: 10px;
-    text-align: left;/* Alinha o texto à esquerda */
+    text-align: left;
 }
 
 li {
     color: #333333;
     padding: 10px;
-    margin-bottom: 8px;/* Adiciona espaço  */
+    margin-bottom: 8px;
     background-color: white;
     border-radius: 6px;
-    border-left: 4px solid #e63981;/* Adiciona uma borda rosa no lado esquerdo */
-    overflow-wrap: anywhere;/* Permite quebrar textos grandes para evitar que ultrapassem o espaço */
+    border-left: 4px solid #e63981;
+    overflow-wrap: anywhere;
 }
